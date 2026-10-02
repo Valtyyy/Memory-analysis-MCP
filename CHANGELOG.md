@@ -2,11 +2,20 @@
 
 ## [0.1.0] - 2026-10-03
 
-Première version.
+First release.
 
 ### Added
-- Module natif C++ `memcore` avec bindings Python.
-- Package Python `memory_mcp` et serveur MCP.
-- Suite de tests.
-- Configuration clang-format / clang-tidy et script de lint.
-- README et guide de contribution.
+- Native C++ `memcore` module with Python bindings.
+- `memory_mcp` Python package and MCP server.
+- Test suite.
+- clang-format / clang-tidy configuration and lint script.
+- README and contributing guide.
+
+### Install
+
+Prebuilt wheel for Windows x64 / Python 3.12:
+
+```
+pip install memory_mcp-0.1.0-cp312-cp312-win_amd64.whl
+memory-mcp
+```

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "nanobind>=2.2"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "memory-mcp"
+version = "0.1.0"
+description = "Read-only Windows process memory analysis MCP server"
+requires-python = ">=3.12"
+dependencies = ["fastmcp>=2"]
+
+[project.scripts]
+memory-mcp = "memory_mcp.server:main"
+
+[dependency-groups]
+dev = [
+    "nanobind>=3.1.0",
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.scikit-build]
+wheel.packages = ["src/memory_mcp"]
+build-dir = "build/{wheel_tag}"
+cmake.build-type = "Release"
+cmake.version = ">=3.26"
+minimum-version = "build-system.requires"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

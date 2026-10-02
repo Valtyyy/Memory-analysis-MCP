@@ -21,6 +21,7 @@ dev = [
 
 [tool.scikit-build]
 wheel.packages = ["src/memory_mcp"]
+wheel.py-api = "cp312"
 build-dir = "build/{wheel_tag}"
 cmake.build-type = "Release"
 cmake.version = ">=3.26"

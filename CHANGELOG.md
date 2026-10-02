@@ -13,9 +13,9 @@ First release.
 
 ### Install
 
-Prebuilt wheel for Windows x64 / Python 3.12:
+Prebuilt wheel for Windows x64, Python 3.12 or newer:
 
 ```
-pip install memory_mcp-0.1.0-cp312-cp312-win_amd64.whl
+pip install memory_mcp-0.1.0-cp312-abi3-win_amd64.whl
 memory-mcp
 ```

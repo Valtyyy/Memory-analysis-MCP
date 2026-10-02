@@ -41,14 +41,14 @@ Installed from the wheel (`memory-mcp` must be on your `PATH`):
 }
 ```
 
-Running from a source checkout (JSON requires escaped backslashes, or use forward slashes):
+Running from a source checkout (use forward slashes in the path, or escape backslashes as `\\`):
 
 ```json
 {
   "mcpServers": {
     "memory-reader": {
       "command": "uv",
-      "args": ["run", "--directory", "C:\path\to\Memory-analysis-MCP", "memory-mcp"]
+      "args": ["run", "--directory", "C:/path/to/Memory-analysis-MCP", "memory-mcp"]
     }
   }
 }

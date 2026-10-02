@@ -5,14 +5,56 @@ C++20 core (WinAPI) → nanobind (`memory_mcp._memcore`) → FastMCP server.
 
 ## Install / run
 
+**Prebuilt wheel** (Windows x64, Python 3.12+): download it from the
+[latest release](https://github.com/Valtyyy/Memory-analysis-MCP/releases/latest), then:
+
 ```sh
-uv sync                      # builds the C++ extension (VS 2026 / MSVC required)
+pip install memory_mcp-0.1.0-cp312-abi3-win_amd64.whl
+memory-mcp                   # stdio MCP server
+```
+
+**From source** (VS 2026 / MSVC required to build the C++ extension):
+
+```sh
+uv sync
 uv run memory-mcp            # stdio MCP server
 uv run memory-mcp --transport http --port 8000
 ```
 
-Claude Code: `claude mcp add memory-reader -- uv run --directory <repo> memory-mcp` (or use `.mcp.json`).
 Reading other users' / elevated processes requires running the server elevated.
+
+## MCP client configuration
+
+Add the server to `.mcp.json` (project scope) or to the `mcpServers` object of `~/.claude.json` (user scope).
+Alternatively: `claude mcp add memory-reader -- memory-mcp`.
+
+Installed from the wheel (`memory-mcp` must be on your `PATH`):
+
+```json
+{
+  "mcpServers": {
+    "memory-reader": {
+      "command": "memory-mcp",
+      "args": []
+    }
+  }
+}
+```
+
+Running from a source checkout (JSON requires escaped backslashes, or use forward slashes):
+
+```json
+{
+  "mcpServers": {
+    "memory-reader": {
+      "command": "uv",
+      "args": ["run", "--directory", "C:\path\to\Memory-analysis-MCP", "memory-mcp"]
+    }
+  }
+}
+```
+
+To read elevated processes, start your MCP client (e.g. Claude Code) from an elevated terminal.
 
 ## Tools
 
